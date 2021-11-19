@@ -1,12 +1,17 @@
 import { UniformTracker } from "@uniformdev/optimize-tracker-react";
-import { localTracker } from "../lib/tracking/local-tracker";
+import { createDefaultTracker } from "@uniformdev/optimize-tracker-browser";
+import intentManifest from "../lib/intentManifest.json";
 
 import "../styles/globals.css";
 
-function MyApp({ Component, pageProps, tracker, scoring }) {
+const localTracker = createDefaultTracker({
+  intentManifest,
+});
+
+function MyApp({ Component, pageProps, scoring }) {
   return (
     <UniformTracker
-      trackerInstance={tracker || localTracker}
+      trackerInstance={localTracker}
       initialIntentScores={scoring}
     >
       <Component {...pageProps} />
