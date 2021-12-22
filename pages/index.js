@@ -26,14 +26,14 @@ const resolveRenderer = (component) => {
 export default function Home({ composition }) {
   useLivePreviewNextStaticProps({
     compositionId: composition?._id,
-    projectId: "UNIFORM_PROJECT_ID",
+    projectId: "TODO: specify the id of your uniform project here",
   });
   return (
     <Composition data={composition} resolveRenderer={resolveRenderer}>
       {({ greeting, contentfulEntry }) => (
         <article>
           <h1>{greeting}</h1>
-          <h2>{contentfulEntry.fields.title}</h2>
+          <h2>{contentfulEntry?.fields?.title}</h2>
           {/* add slot component */}
           <Slot name="promos" />
         </article>
